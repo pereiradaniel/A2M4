@@ -1,63 +1,32 @@
-// ----------------------------------------------------------------------------
-// DO NOT remove the below 2 lines.
-// The below two lines is needed to ensure only one copy
-// of this header file is included when compiling the project.
-// (it is referred to as "safeguarding")
-// You will learn about this in C++ (OOP244/BTP200)
-// For now, simply leave this code in!
 #ifndef CONTACTS_H_
 #define CONTACTS_H_
-// ----------------------------------------------------------------------------
 
-//==============================================
-// Name:           Full name here
-// Student Number: #########
-// Email:          userID@myseneca.ca
-// Section:        XXX
-// Date:           
-//==============================================
-// Assignment:     2
-// Milestone:      4
-//==============================================
-
-
-//--------------------------------
 // Structure Types
-//--------------------------------
+struct Name {
+	char firstName[31];
+	char middleInitial[7];
+	char lastName[36];
+};
 
-// +-------------------------------------------------+
-// | NOTE:  Copy/Paste your Assignment-2 Milestone-3 |
-// |        structures below:                        |
-// +-------------------------------------------------+
+struct Address {
+	int streetNumber, apartmentNumber;
+	char street[41], postalCode[8], city[41];
+};
 
-// Structure type Name declaration
+struct Numbers {
+	char cell[11], home[11], business[11];
+};
 
-// Structure type Address declaration
+struct Contact {
+	struct Name name;
+	struct Address address;
+	struct Numbers numbers;
+};
 
-// Structure type Numbers declaration
-
-// Structure type Contact declaration
-
-
-//--------------------------------
 // Function Prototypes
-//--------------------------------
+void getName(struct Name* name);
+void getAddress(struct Address* address);
+void getNumbers(struct Numbers* numbers);
+void getContact(struct Contact* contact);
 
-// +-------------------------------------------------+
-// | NOTE:  Copy/Paste your Assignment-2 Milestone-3 |
-// |        function prototypes below...             |
-// +-------------------------------------------------+
-
-// getName:
-
-// getAddress:
-
-// getNumbers:
-
-// getContact:
-
-
-
-// ----------------------------------------------------------------------------
-// DO NOT remove the below line (closing of the "safeguard" condition)
-#endif // !CONTACTS_H_
+#endif

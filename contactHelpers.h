@@ -1,84 +1,34 @@
-//==============================================
-// Name:           Full name here
-// Student Number: #########
-// Email:          userID@myseneca.ca
-// Section:        XXX
-// Date:           
-//==============================================
-// Assignment:     2
-// Milestone:      4
-//==============================================
-
-/*----------------------------------------------------------------------
-Description: This header file modularizes general helper functions to
-             help reduce redundant coding for common repetitive tasks.
-----------------------------------------------------------------------*/
-
+/*-------------------------------------------------------------------------
+Description: This header file modularizes general helper functions
+			 to help reduce redundant coding for common repetitive tasks.
+------------------------------------------------------------------------- */
 
 // Hint:  This header file now has functions with parameters referring to 
 //        the struct Contact type so be sure to include the contacts.h header:
+#include "contacts.h"
 
 
-//--------------------------------
+/*---------------------------------------------------------------------
+Description: This header file modularizes general helper functions to
+help reduce redundant coding for common repetitive tasks.
+---------------------------------------------------------------------*/
+
 // Function Prototypes
-//--------------------------------
-
-// +-------------------------------------------------+
-// | NOTE:  Copy/Paste your Assignment-2 Milestone-3 |
-// |        function prototypes here...              |
-// +-------------------------------------------------+
-
-// Clear the standard input buffer
-// clearKeyboard:
-
-
-// pause:
-
-
-// getInt:
-
-
-// getIntInRange:
-
-
-// yes:
-
-
-// menu:
-
-
-// contactManagerSystem:
-
-
-// Generic function to get a ten-digit phone number:
-// getTenDigitPhone:
-
-
-// findContactIndex:
-
-
-// displayContactHeader:
-
-
-// displayContactFooter:
-
-
-// displayContact:
-
-
-// displayContacts:
-
-
-// searchContacts:
-
-
-// addContact:
-
-
-// updateContact:
-
-
-// deleteContact:
-
-
-// sortContacts:
+void clearKeyboard(void);  // Clear the standard input buffer
+void pause(void);
+int getInt(void);
+int getIntInRange(int min, int max);
+int yes(void);
+int menu(void);
+void contactManagerSystem(void);
+void getTenDigitPhone(char phoneNum[]);
+int findContactIndex(const struct Contact contacts[], int size, const char cellNum[]);
+void displayContactHeader(void);
+void displayContactFooter(int count);
+void displayContact(const struct Contact* contact);
+void displayContacts(const struct Contact contacts[], int size);
+void searchContacts(const struct Contact contacts[], int size);
+void addContact(struct Contact contacts[], int size);
+void updateContact(struct Contact contacts[], int size);
+void deleteContact(struct Contact contacts[], int size);
+void sortContacts(struct Contact contacts[], int size);
