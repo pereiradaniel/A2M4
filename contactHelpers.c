@@ -437,28 +437,20 @@ void deleteContact(struct Contact contacts[], int size)
 	return;
 };
 
-void sortContacts(struct Contact contacts[], int size)
-{
-	//int i;
-	//int j;
-	//int comp;
-	//char tmp[11] = { '\0' };
-
-	//for (i = 0; i < size; i++)
-	//{
-	//	comp = strcmp(*contacts[i].numbers.cell, *contacts[i + 1].numbers.cell);
-	//	if (comp > 0)
-	//	{
-	//		strcat(tmp, *contacts[i].numbers.cell);
-
-	//		for (j = 0; j < size; j++)
-	//		{
-	//			*contacts[i].numbers.cell = *contacts[i + j + 1].numbers.cell;
-	//		}
-	//	}
-
-	//}
-	//printf("\n--- Contacts sorted! ---\n");
-
-	return;
-};
+void sortContacts(struct Contact contacts[], int size) {
+	struct Contact swap[1];
+	int i, j;
+	for (i = 0; i < size - 1; i++)
+	{
+		for (j = i + 1; j < size; j++)
+		{
+			if (strcmp(contacts[i].numbers.cell, contacts[j].numbers.cell) > 0)
+			{
+				swap[0] = contacts[i];
+				contacts[i] = contacts[j];
+				contacts[j] = swap[0];
+			}
+		}
+	}
+	printf("--- Contacts sorted! ---\n\n");
+}
