@@ -20,8 +20,6 @@
 
 #define MAXCONTACTS 5
 
-
-
 // Function Definitions
 //--------------------------------
 // | NOTE:  Copy/Paste your Assignment-2 Milestone-3 |
