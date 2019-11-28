@@ -13,6 +13,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include "contactHelpers.h"
 // #include "contacts.h"
@@ -90,6 +91,8 @@ int yes(void) {
 
 int menu(void)
 {
+	int moption;  // menuoption
+
 	printf("Contact Management System\n");
 	printf("-------------------------\n");
 	printf("1. Display contacts\n");
@@ -102,13 +105,28 @@ int menu(void)
 	printf("\n");
 	printf("Select an option:> ");
 
-	return getIntInRange(0, 6);
-	printf("\n");
+	moption = getIntInRange(0, 6);
+	return moption;
 }
 
 void contactManagerSystem(void)
 {
 	int mselect;	// menu selection
+	struct Contact contactlist[MAXCONTACTS] = { { { "Rick", {'\0'}, "Grimes" },
+{ 11, "Trailer Park", 0, "A7A 2J2", "King City" },
+{ "4161112222", "4162223333", "4163334444" } },
+{
+{ "Maggie", "R.", "Greene" },
+{ 55, "Hightop House", 0, "A9A 3K3", "Bolton" },
+{ "9051112222", "9052223333", "9053334444" } },
+{
+{ "Morgan", "A.", "Jones" },
+{ 77, "Cottage Lane", 0, "C7C 9Q9", "Peterborough" },
+{ "7051112222", "7052223333", "7053334444" } },
+{
+{ "Sasha", {'\0'}, "Williams" },
+{ 55, "Hightop House", 0, "A9A 3K3", "Bolton" },
+{ "9052223333", "9052223333", "9054445555" } }, };
 
 	do {
 		mselect = menu();
@@ -125,32 +143,32 @@ void contactManagerSystem(void)
 
 			break;
 		case 1:
-			printf("\n<<< Feature 1 is unavailable >>>\n\n");
+			displayContacts(contactlist, MAXCONTACTS);
 			pause();
 			printf("\n");
 			break;
 		case 2:
-			printf("\n<<< Feature 2 is unavailable >>>\n\n");
+			addContact(contactlist, MAXCONTACTS);
 			pause();
 			printf("\n");
 			break;
 		case 3:
-			printf("\n<<< Feature 3 is unavailable >>>\n\n");
+			updateContact(contactlist, MAXCONTACTS);
 			pause();
 			printf("\n");
 			break;
 		case 4:
-			printf("\n<<< Feature 4 is unavailable >>>\n\n");
+			deleteContact(contactlist, MAXCONTACTS);
 			pause();
 			printf("\n");
 			break;
 		case 5:
-			printf("\n<<< Feature 5 is unavailable >>>\n\n");
+			searchContacts(contactlist, MAXCONTACTS);
 			pause();
 			printf("\n");
 			break;
 		case 6:
-			printf("\n<<< Feature 6 is unavailable >>>\n\n");
+			sortContacts(contactlist, MAXCONTACTS);
 			pause();
 			printf("\n");
 			break;
@@ -178,19 +196,22 @@ void getTenDigitPhone(char phoneNum[])
 		clearKeyboard();
 
 		// (String Length Function: validate entry of 10 characters)
-		if (strlen(phoneNum) == 10)
-		{
+		if (strlen(phoneNum) == 10) {
+			int tempC;
 			int length = strlen(phoneNum);
-			for (int i = 0; i < length; i++)
-			{
-				if (isdigit(phoneNum[i]) != 0) {
+			for (int i = 0; i < length; i++) {
+				tempC = isdigit(phoneNum[i]);
+				if (tempC == 0) {
+					//i = length;
 					needInput = 1;
+					break;
 				}
 			}
-			needInput = 0;
+			// needInput = 0;
 		}
-		else
+		else {
 			printf("Enter a 10-digit phone number: ");
+		}
 	}
 }
 
@@ -387,7 +408,7 @@ void deleteContact(struct Contact contacts[], int size)
 	int u;
 
 	printf("\nEnter the cell number for the contact: ");
-	getTenDigits(cn);
+	getTenDigitPhone(cn);
 
 	u = findContactIndex(contacts, size, cn);
 
