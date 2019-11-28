@@ -20,6 +20,9 @@ void getName(struct Name* name)
 		printf("Please enter the contact's middle initial(s): ");
 		scanf(" %6[^\n]", name->middleInitial);
 		clearKeyboard();
+	} else
+	{
+		name->middleInitial[0] = '\0';
 	}
 
 	// Ask for last name:
@@ -73,7 +76,7 @@ void getNumbers(struct Numbers* numbers)
 	int yorn2;
 	// Ask for cell number:
 	printf("Please enter the contact's cell phone number: ");
-	scanf(" %10s[^\n]", numbers->cell);
+	getTenDigitPhone(numbers->cell);
 
 	// Ask for home number:
 	printf("Do you want to enter a home phone number? (y or n): ");
@@ -81,7 +84,7 @@ void getNumbers(struct Numbers* numbers)
 	if (yorn2 == 1)
 	{
 		printf("Please enter the contact's home phone number: ");
-		scanf(" %10s[^\n]", numbers->home);
+		getTenDigitPhone(numbers->home);
 	}
 	else {
 		numbers->home[0] = '\0';
@@ -93,7 +96,7 @@ void getNumbers(struct Numbers* numbers)
 	if (yorn2 == 1)
 	{
 		printf("Please enter the contact's business phone number: ");
-		scanf(" %10s[^\n]", numbers->business);
+		getTenDigitPhone(numbers->business);
 	}
 	else {
 		numbers->business[0] = '\0';

@@ -14,9 +14,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdlib.h>
+// #include <stdlib.h>
 #include "contactHelpers.h"
-// #include "contacts.h"
 
 #define MAXCONTACTS 5
 
@@ -110,21 +109,23 @@ int menu(void)
 void contactManagerSystem(void)
 {
 	int mselect;	// menu selection
-	struct Contact contactlist[MAXCONTACTS] = { { { "Rick", {'\0'}, "Grimes" },
-{ 11, "Trailer Park", 0, "A7A 2J2", "King City" },
-{ "4161112222", "4162223333", "4163334444" } },
-{
-{ "Maggie", "R.", "Greene" },
-{ 55, "Hightop House", 0, "A9A 3K3", "Bolton" },
-{ "9051112222", "9052223333", "9053334444" } },
-{
-{ "Morgan", "A.", "Jones" },
-{ 77, "Cottage Lane", 0, "C7C 9Q9", "Peterborough" },
-{ "7051112222", "7052223333", "7053334444" } },
-{
-{ "Sasha", {'\0'}, "Williams" },
-{ 55, "Hightop House", 0, "A9A 3K3", "Bolton" },
-{ "9052223333", "9052223333", "9054445555" } }, };
+	struct Contact contactlist[MAXCONTACTS] =
+	{ { { "Rick", {'\0'}, "Grimes" },
+		{ 11, "Trailer Park", 0, "A7A 2J2", "King City" },
+		{ "4161112222", "4162223333", "4163334444" } },
+		{
+		{ "Maggie", "R.", "Greene" },
+		{ 55, "Hightop House", 0, "A9A 3K3", "Bolton" },
+		{ "9051112222", "9052223333", "9053334444" } },
+		{
+		{ "Morgan", "A.", "Jones" },
+		{ 77, "Cottage Lane", 0, "C7C 9Q9", "Peterborough" },
+		{ "7051112222", "7052223333", "7053334444" } },
+		{
+		{ "Sasha", {'\0'}, "Williams" },
+		{ 55, "Hightop House", 0, "A9A 3K3", "Bolton" },
+		{ "9052223333", "9052223333", "9054445555" } },
+	};
 
 	do {
 		mselect = menu();
@@ -190,26 +191,30 @@ void getTenDigitPhone(char phoneNum[])
 	int needInput = 1;
 
 	while (needInput == 1) {
+		int i = 0;
 		scanf("%10s", phoneNum);
 		clearKeyboard();
 
-		// (String Length Function: validate entry of 10 characters)
-		if (strlen(phoneNum) == 10) {
-			int tempC;
-			int length = strlen(phoneNum);
-			for (int i = 0; i < length; i++) {
-				tempC = isdigit(phoneNum[i]);
-				if (tempC == 0) {
-					//i = length;
+		//Ensuring all values entered are numerical digits and the length of string is 10
+		if (strlen(phoneNum) == 10)
+		{
+			needInput = 0;
+			for (i = 0; i < 10; i++)
+			{
+				if (!isdigit(phoneNum[i]))
+				{
 					needInput = 1;
+					printf("Enter a 10-digit phone number: ");
 					break;
 				}
 			}
-			// needInput = 0;
+
 		}
-		else {
+		else
+		{
 			printf("Enter a 10-digit phone number: ");
 		}
+
 	}
 }
 
