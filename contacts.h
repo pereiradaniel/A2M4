@@ -7,17 +7,20 @@ struct Name {
 	char middleInitial[7];
 	char lastName[36];
 };
-
 struct Address {
-	int streetNumber, apartmentNumber;
-	char street[41], postalCode[8], city[41];
+	int streetNumber;
+	char street[41];
+	int apartmentNumber;
+	char postalCode[8];
+	char city[41];
 };
-
 struct Numbers {
-	char cell[11], home[11], business[11];
+	char cell[11];
+	char home[11];
+	char business[11];
 };
-
-struct Contact {
+struct Contact
+{
 	struct Name name;
 	struct Address address;
 	struct Numbers numbers;
@@ -29,4 +32,4 @@ void getAddress(struct Address* address);
 void getNumbers(struct Numbers* numbers);
 void getContact(struct Contact* contact);
 
-#endif
+#endif // !CONTACTS_H_

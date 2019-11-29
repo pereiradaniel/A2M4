@@ -1,20 +1,6 @@
-/*-------------------------------------------------------------------------
-Description: This header file modularizes general helper functions
-			 to help reduce redundant coding for common repetitive tasks.
-------------------------------------------------------------------------- */
+#include "contacts.h" 
 
-// Hint:  This header file now has functions with parameters referring to 
-//        the struct Contact type so be sure to include the contacts.h header:
-#include "contacts.h"
-
-
-/*---------------------------------------------------------------------
-Description: This header file modularizes general helper functions to
-help reduce redundant coding for common repetitive tasks.
----------------------------------------------------------------------*/
-
-// Function Prototypes
-void clearKeyboard(void);  // Clear the standard input buffer
+void clearKeyboard(void);
 void pause(void);
 int getInt(void);
 int getIntInRange(int min, int max);
